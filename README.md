@@ -1,3 +1,3 @@
 # best-five-player-sell
 
-https://www.showwcase.com/
+https://abdullahmiraz.github.io/best-five-player-sell/
