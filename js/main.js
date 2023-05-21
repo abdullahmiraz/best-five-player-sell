@@ -2,7 +2,7 @@ function getInputFieldValueById(inputId) {
     return parseInt(document.getElementById(inputId).value);
 }
 function setInputFieldValueById(inputId, inputValue){
-    document.getElementById(inputId).value = inputValue;
+    document.getElementById(inputId).value = parseInt(inputValue);
 }
 
 
@@ -28,17 +28,28 @@ buttonArray.forEach(function (button) {
 });
 
 let TotalValue ;
+
 document.getElementById('calculate').addEventListener('click', function(){
     const perPlayer =  getInputFieldValueById('per-player');
     const playerExpenses = perPlayer*(counter-1);
     setInputFieldValueById('player-expenses', playerExpenses) ;
     const manager = getInputFieldValueById('manager');
     const coach = getInputFieldValueById('coach');
-    TotalValue = playerExpenses+manager+coach ;
+    if(playerExpenses=='' || manager == '' || coach == ''){
+        alert("Error input !")  ;
+        return ;
+    }
+    TotalValue = parseFloat(playerExpenses+manager+coach) ;
     console.log(TotalValue);
 })
+
 document.getElementById('calculate-total').addEventListener('click', function(){
     setInputFieldValueById('total', TotalValue);
+    const playerExpenses = document.getElementById('player-expenses').value ;
+    if( playerExpenses == '' || playerExpenses <= 0 || isNaN(playerExpenses)){
+        alert('select player first !') ;
+        return ;
+    } 
 })
 
 
